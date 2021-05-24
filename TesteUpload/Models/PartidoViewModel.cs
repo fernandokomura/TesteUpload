@@ -15,5 +15,8 @@ namespace TesteUpload.Models
         public string Nome { get; set; }
 
         public IFormFile Logotipo { get; set; }
+
+        public string  Logotipo2 { get; set; }
+
     }
 }

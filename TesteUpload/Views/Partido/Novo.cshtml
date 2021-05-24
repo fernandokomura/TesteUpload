@@ -20,6 +20,7 @@
             <div class="form-group">
                 <label asp-for="Logotipo" class="control-label"></label>
                 <input asp-for="Logotipo" class="form-control" accept="image/*" />
+                <input asp-for="Logotipo2"/>
                 <div id="Logotipo-Croppie"></div>
                 <span asp-validation-for="Logotipo" class="text-danger"></span>
             </div>
@@ -85,11 +86,11 @@
                     size: 'original'
                 }).then(function (resp) {
 
-                    var data = new FormData();
+                    //var data = new FormData();
       
-                    data.append('Logotipo2', resp, );
+                    //data.append('Logotipo2', resp );
 
-                    /*$('#Logotipo').attr("src", resp);*/
+                    $('#Logotipo2').val(resp);
                     $('#formup').submit();
                 });
                 return false;

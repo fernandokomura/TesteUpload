@@ -30,14 +30,18 @@ namespace TesteUpload.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Novo(PartidoViewModel partido, object imgh)
+        public async Task<IActionResult> Novo( PartidoViewModel partido)
         {
             if (partido.Logotipo != null)
             {
                 var uniqueFileName = GetUniqueFileName(partido.Logotipo.FileName);
                 var uploads = Path.Combine(_env.WebRootPath,"uploads");
                 var filePath = Path.Combine(uploads, uniqueFileName);
-                await partido.Logotipo.CopyToAsync(new FileStream(filePath, FileMode.Create));
+                //await partido.Logotipo.CopyToAsync(new FileStream(filePath, FileMode.Create));
+
+                var imageBytes = Convert.FromBase64String(partido.Logotipo2.Split(',')[1]);
+
+                System.IO.File.WriteAllBytes(filePath, imageBytes);
 
                 //to do : Save uniqueFileName  to your db table   
             }
